@@ -115,8 +115,8 @@ export default function App() {
           >
             <div className="relative h-40 overflow-hidden">
               <img 
-                src="/src/assets/images/smallville_full_cast_hero_1779108734310.png" 
-                alt="Smallville Cast" 
+                src="/src/assets/images/smallville_rivals_hero_1779108936090.png" 
+                alt="Smallville Rivals" 
                 className="w-full h-full object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-neutral-950 to-transparent" />

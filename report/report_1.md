@@ -39,14 +39,37 @@ Klaster Luthors (Lex, Lionel, Tess) pokazuje visoku unutarnju tenziju. Veza izme
 ### 4. Justice League i Evolucija Heroja
 Klaster Lige Pravde formira se oko **Olivera Queena**. Iako je Clark Kent centralna figura cijelog grafa, Oliver Queen služi kao sekundarno središte koje povezuje AC-a, Victora i Barta. Značajna je veza Olivera i **Chloe Sullivan** ("Marriage"), koja integrira klaster "Watchtower" (Friends) s militantnijim krilom superheroja.
 
+```mermaid
+graph TD
+    JL((Justice League)) --> L[Liderstvo]
+    JL --> M[Članovi]
+    JL --> S[Podrška]
+    L --> CK[Clark Kent]
+    L --> OQ[Oliver Queen]
+    M --> AC[Aquaman]
+    M --> VS[Cyborg]
+    M --> BA[Impulse]
+    S --> CS[Chloe Sullivan / Watchtower]
+```
+
 ## Rasprava
 
 Analiza interaktivnog grafa pruža dublji uvid u narativne i međuljudske mehanizme serije:
 
 - **Evolucija Romanse:** Vizualizacija jasno pokazuje tranziciju Clarkovih interesa. Veza s **Lanom Lang** označena je kao "Romance (Former)", dok je veza s **Lois Lane** "Romance (True)". Zanimljivo je primijetiti da Lois Lane dijeli i "Past Romance" vezu s Oliverom Queenom, što stvara specifičan trokut unutar grafa koji utječe na pozicioniranje čvorova u realnom vremenu.
+
+```mermaid
+graph LR
+    CK[Clark Kent] -- Bivša --> LL[Lana Lang]
+    CK -- Prava --> Lois[Lois Lane]
+    Lois -- Bivša --> OQ[Oliver Queen]
+    OQ -- Brak --> CS[Chloe Sullivan]
+```
+
 - **Infiltracija i Infekcija:** Veza **Lane Lang** i **Brainiaca** ("Infection/Obsession") služi kao kritični narativni most. Ona povlači Lanu iz Kentovog klastera prema zlokobnijem Kriptonskom klasteru, što modelira njezin gubitak agencije u kasnijim sezonama. Slično tome, poveznica Chloe i Brainiaca ("Infection") vizualno kontaminira "Watchtower" bazu podataka.
 - **Dihotomija Očinstva:** Grafički prikaz Jonathanove veze s Jor-Elom ("The Legacy") naglašava temu zajedničkog roditeljstva nad Clarkom, unatoč njihovim različitim metodama. S druge strane, Lionelova uloga kao Jor-Elovog hosta vizualno ga "iskupljuje" unutar sustava, udaljavajući ga od Lexovog čisto antagonističkog puta.
-- **Tajna kao Kohezivna Sila:** Čvorovi poput Petea Rossa i Chloe Sullivan dobivaju na težini unutar sustava upravo zbog njihovih veza "Secret Keeper". Bez tih veza, Clarkov bi čvor bio previše izložen antagonističkim silama poput Lexa i Zoda.
+- **Tajna kao Kohezivna Sila:**
+ Čvorovi poput Petea Rossa i Chloe Sullivan dobivaju na težini unutar sustava upravo zbog njihovih veza "Secret Keeper". Bez tih veza, Clarkov bi čvor bio previše izložen antagonističkim silama poput Lexa i Zoda.
 
 ## Zaključak
 

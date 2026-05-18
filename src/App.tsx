@@ -355,7 +355,7 @@ export default function App() {
               const fontSize = 14/globalScale;
               const groupColor = getGroupColor((node as any).group);
               
-              ctx.font = `${fontSize}px Inter`;
+              ctx.font = `600 ${fontSize}px Inter`;
               const textWidth = ctx.measureText(label).width;
               const bckgDimensions = [textWidth, fontSize].map(n => n + fontSize * 0.4);
 
@@ -387,7 +387,7 @@ export default function App() {
               ctx.textAlign = 'center';
               ctx.textBaseline = 'middle';
               ctx.fillStyle = 'white';
-              ctx.fontWeight = '600';
+              ctx.font = `600 ${fontSize}px Inter`;
               ctx.fillText(label, node.x!, node.y! + 10 + pillHeight/2);
             }}
             nodePointerAreaPaint={(node, color, ctx) => {

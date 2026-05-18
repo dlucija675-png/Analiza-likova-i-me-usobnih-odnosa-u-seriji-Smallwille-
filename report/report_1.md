@@ -18,6 +18,16 @@ Aplikacija je izgrađena kao Single Page Application (SPA) koristeći:
 - **react-force-graph-2d:** Knjižnica temeljena na D3-force engineu za renderiranje grafova.
 - **Tailwind CSS:** Za implementaciju dizajnerskog jezika (tzv. "dark mode") koji odražava ton serije.
 
+```mermaid
+graph TD
+    ID[Početni Podaci] --> S[React State: data]
+    S --> FG[ForceGraph2D Engine]
+    FG --> UI[Interaktivno Sučelje]
+    UI -- "Dodavanje čvora/veze" --> S
+    UI -- "Filtriranje/Pretraga" --> S
+    S -- "Osvježavanje Grafa" --> FG
+```
+
 ### Modeliranje podataka
 Podaci su strukturirani u dva osnovna skupa:
 1. **Čvorovi (Nodes):** Predstavljaju likove s atributima kao što su uloga, biološko porijeklo i pripadnost grupi.

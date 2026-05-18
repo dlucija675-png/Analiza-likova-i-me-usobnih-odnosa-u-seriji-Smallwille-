@@ -1,6 +1,6 @@
 # Smallville: Mreža Veza i Klastera
 
-![Smallville Cast Hero](./src/assets/images/smallville_cast_hero_1779108589498.png)
+![Smallville Cast Hero](./src/assets/images/smallville_full_cast_hero_1779108734310.png)
 
 ## O Projektu
 **Smallville: Mreža Veza** je interaktivni alat za vizualizaciju kompleksnih odnosa između likova iz popularne serije *Smallville*. Ovaj projekt koristi grafove snaga (force-directed graphs) kako bi prikazao kako su Clark Kent, Lex Luthor i ostali stanovnici Smallvillea povezani kroz prijateljstva, rivalstva i obiteljske veze.

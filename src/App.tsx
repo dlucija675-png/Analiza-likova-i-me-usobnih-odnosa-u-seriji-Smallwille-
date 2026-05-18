@@ -115,7 +115,7 @@ export default function App() {
           >
             <div className="relative h-40 overflow-hidden">
               <img 
-                src="/src/assets/images/smallville_cast_hero_1779108589498.png" 
+                src="/src/assets/images/smallville_full_cast_hero_1779108734310.png" 
                 alt="Smallville Cast" 
                 className="w-full h-full object-cover"
               />

@@ -20,10 +20,26 @@ import { MermaidChart } from './components/MermaidChart';
 
 export default function App() {
   const [data, setData] = useState<NetworkData>(initialData);
+  const [currentSeason, setCurrentSeason] = useState(10);
   const [sidebarOpen, setSidebarOpen] = useState(true);
   const [selectedNode, setSelectedNode] = useState<Person | null>(null);
   const [view, setView] = useState<'graph' | 'charts'>('graph');
   const graphRef = useRef<any>();
+
+  const seasonalData = useMemo(() => {
+    const visibleNodes = data.nodes.filter(n => !n.appearsIn || n.appearsIn.includes(currentSeason));
+    const nodeIds = new Set(visibleNodes.map(n => n.id));
+    const visibleLinks = data.links.filter(l => {
+      const sourceId = typeof l.source === 'string' ? l.source : (l.source as any).id;
+      const targetId = typeof l.target === 'string' ? l.target : (l.target as any).id;
+      return (!l.seasons || l.seasons.includes(currentSeason)) && nodeIds.has(sourceId) && nodeIds.has(targetId);
+    });
+
+    return {
+      nodes: visibleNodes,
+      links: visibleLinks
+    };
+  }, [data, currentSeason]);
 
   // Add person state
   const [searchQuery, setSearchQuery] = useState('');
@@ -35,9 +51,9 @@ export default function App() {
   const [targetId, setTargetId] = useState('');
 
   const filteredNodes = useMemo(() => {
-    if (!searchQuery) return data.nodes;
-    return data.nodes.filter(n => n.name.toLowerCase().includes(searchQuery.toLowerCase()));
-  }, [data.nodes, searchQuery]);
+    if (!searchQuery) return seasonalData.nodes;
+    return seasonalData.nodes.filter(n => n.name.toLowerCase().includes(searchQuery.toLowerCase()));
+  }, [seasonalData.nodes, searchQuery]);
 
   const addPerson = () => {
     if (!newName) return;
@@ -222,7 +238,7 @@ export default function App() {
                         id="select-source"
                       >
                         <option value="">Odaberi prvu osobu</option>
-                        {data.nodes.map(n => <option key={n.id} value={n.id}>{n.name} ({n.group})</option>)}
+                        {seasonalData.nodes.map(n => <option key={n.id} value={n.id}>{n.name} ({n.group})</option>)}
                       </select>
                       <select
                         value={targetId}
@@ -231,7 +247,7 @@ export default function App() {
                         id="select-target"
                       >
                         <option value="">Odaberi drugu osobu</option>
-                        {data.nodes.filter(n => n.id !== sourceId).map(n => <option key={n.id} value={n.id}>{n.name} ({n.group})</option>)}
+                        {seasonalData.nodes.filter(n => n.id !== sourceId).map(n => <option key={n.id} value={n.id}>{n.name} ({n.group})</option>)}
                       </select>
                       <button
                         onClick={addLink}
@@ -370,7 +386,7 @@ export default function App() {
             <div className="absolute inset-0 cursor-crosshair">
               <ForceGraph2D
                 ref={graphRef}
-                graphData={data}
+                graphData={seasonalData}
                 nodeLabel="name"
                 nodeRelSize={6}
                 nodeVal={d => (d.group === 'Kents' || d.group === 'Luthors') ? 2.5 : 1.5}
@@ -429,6 +445,39 @@ export default function App() {
                   ctx.fill();
                 }}
               />
+            </div>
+
+            {/* Season Slider */}
+            <div className="absolute bottom-10 right-10 z-10 w-80 bg-neutral-900/80 backdrop-blur-xl border border-neutral-700 p-4 rounded-2xl shadow-2xl space-y-4">
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-2">
+                  <div className="w-6 h-6 bg-blue-600 rounded flex items-center justify-center text-[10px] font-black italic">S</div>
+                  <span className="text-xs font-bold text-white uppercase tracking-wider">Vremenska Lenta</span>
+                </div>
+                <span className="text-xl font-black text-blue-500 italic">SEZONA {currentSeason}</span>
+              </div>
+              <div className="relative h-2 flex items-center">
+                <input 
+                  type="range" 
+                  min="1" 
+                  max="10" 
+                  value={currentSeason} 
+                  onChange={(e) => setCurrentSeason(parseInt(e.target.value))}
+                  className="w-full h-1 bg-neutral-800 rounded-lg appearance-none cursor-pointer accent-blue-600"
+                />
+              </div>
+              <div className="flex justify-between text-[10px] text-neutral-500 font-bold px-1">
+                <span>1</span>
+                <span>3</span>
+                <span>5</span>
+                <span>7</span>
+                <span>10</span>
+              </div>
+              <div className="text-[10px] text-neutral-400 bg-black/40 p-2 rounded-lg leading-relaxed">
+                {currentSeason <= 4 && "Rano razdoblje: Fokus na Smallville srednju školu i početak rivalstva."}
+                {currentSeason > 4 && currentSeason <= 7 && "Srednje razdoblje: Gubitak Jonathana, uspon Luthora i dolazak Kriptonaca."}
+                {currentSeason > 7 && "Kasno razdoblje: Metropolis, Watchtower i formiranje Lige Pravde."}
+              </div>
             </div>
           </>
         ) : (

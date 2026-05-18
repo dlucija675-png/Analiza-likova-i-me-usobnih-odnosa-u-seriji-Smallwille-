@@ -5,6 +5,7 @@ export interface Person {
   role?: string;
   group?: string; // Used for clustering/coloring
   imageUrl?: string;
+  appearsIn?: number[]; // Seasons they appear in, e.g., [1, 2, 3]
 }
 
 export interface Connection {
@@ -12,6 +13,7 @@ export interface Connection {
   target: string;
   type?: string; // e.g., "suradnik", "prijatelj", "obitelj"
   strength?: number;
+  seasons?: number[]; // Seasons this connection is active
 }
 
 export interface NetworkData {

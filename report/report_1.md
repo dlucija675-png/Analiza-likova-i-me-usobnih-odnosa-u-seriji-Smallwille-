@@ -17,14 +17,17 @@ Aplikacija je izgrađena kao Single Page Application (SPA) koristeći:
 - **React 19:** Za upravljanje stanjem i komponentama korisničkog sučelja.
 - **react-force-graph-2d:** Knjižnica temeljena na D3-force engineu za renderiranje grafova.
 - **Tailwind CSS:** Za implementaciju dizajnerskog jezika (tzv. "dark mode") koji odražava ton serije.
+- **Vremenska Lenta (Dynamic Filtering):** Implementacija klizača koji omogućuje filtriranje podataka po sezonama (S1-S10), vizualizirajući evoluciju mreže.
 
 ```mermaid
 graph TD
     ID[Početni Podaci] --> S[React State: data]
-    S --> FG[ForceGraph2D Engine]
+    S --> SF[Seasonal Filter: currentSeason]
+    SF --> SD[Filtered Data: seasonalData]
+    SD --> FG[ForceGraph2D Engine]
     FG --> UI[Interaktivno Sučelje]
+    UI -- "Promjena Sezone" --> SF
     UI -- "Dodavanje čvora/veze" --> S
-    UI -- "Filtriranje/Pretraga" --> S
     S -- "Osvježavanje Grafa" --> FG
 ```
 
@@ -48,6 +51,12 @@ Klaster Luthors (Lex, Lionel, Tess) pokazuje visoku unutarnju tenziju. Veza izme
 
 ### 4. Justice League i Evolucija Heroja
 Klaster Lige Pravde formira se oko **Olivera Queena**. Iako je Clark Kent centralna figura cijelog grafa, Oliver Queen služi kao sekundarno središte koje povezuje AC-a, Victora i Barta. Značajna je veza Olivera i **Chloe Sullivan** ("Marriage"), koja integrira klaster "Watchtower" (Friends) s militantnijim krilom superheroja.
+
+### 5. Dinamička Evolucija kroz Sezone
+Analiza protoka vremena otkriva tri različite sistemske konfiguracije:
+- **Razdoblje Stabilnosti (S1-S4):** Visoka korelacija između fizičke lokacije (Smallville) i socijalnog klastera.
+- **Razdoblje Tranzicije (S5-S7):** Disperzija Kentovog nukleusa i uspon LuthorCorp dominacije.
+- **Razdoblje Ekspancije (S8-S10):** Umrežavanje s vanjskim herojima i redefiniranje Clarka kao globalnog čvora.
 
 ```mermaid
 graph TD

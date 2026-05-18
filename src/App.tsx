@@ -113,8 +113,14 @@ export default function App() {
             transition={{ type: 'spring', damping: 25, stiffness: 200 }}
             className="w-80 h-full border-r border-neutral-800 bg-neutral-950/80 backdrop-blur-xl z-20 flex flex-col"
           >
-            <div className="p-6 border-b border-neutral-800 flex items-center justify-between bg-gradient-to-r from-yellow-900/10 via-blue-900/10 to-green-900/10">
-              <div className="flex items-center gap-2">
+            <div className="relative h-40 overflow-hidden">
+              <img 
+                src="/src/assets/images/smallville_cast_hero_1779108589498.png" 
+                alt="Smallville Cast" 
+                className="w-full h-full object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-neutral-950 to-transparent" />
+              <div className="absolute bottom-4 left-6 flex items-center gap-2">
                 <div className="w-8 h-8 bg-gradient-to-br from-yellow-500 to-red-600 rounded flex items-center justify-center shadow-lg shadow-red-500/20">
                   <span className="text-white font-black text-xl italic">S</span>
                 </div>
@@ -122,10 +128,10 @@ export default function App() {
               </div>
               <button 
                 onClick={() => setSidebarOpen(false)}
-                className="text-neutral-500 hover:text-white transition-colors"
+                className="absolute top-4 right-4 p-1.5 bg-black/40 hover:bg-black/60 rounded-full text-neutral-400 hover:text-white transition-colors backdrop-blur-sm shadow-xl"
                 id="close-sidebar"
               >
-                <Minimize2 size={18} />
+                <Minimize2 size={16} />
               </button>
             </div>
 

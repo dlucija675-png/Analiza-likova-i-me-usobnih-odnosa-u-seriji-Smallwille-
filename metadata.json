@@ -1,0 +1,6 @@
+{
+  "name": "Smallville: Mreža Veza",
+  "description": "Grafički prikaz odnosa, prijateljstava i rivalstava u seriji Smallville.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
